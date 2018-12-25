@@ -1,7 +1,5 @@
 # docker-sphinxsearch
-Docker image for Sphinx search engine
-
-[Read more](https://hub.docker.com/r/macbre/sphinxsearch/)
+Docker image for [Sphinx search engine](http://sphinxsearch.com/docs/sphinx3.html)
 
 ```
 docker pull macbre/sphinxsearch
