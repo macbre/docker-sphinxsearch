@@ -1,16 +1,15 @@
 # Dockerfile for Sphinx SE
-FROM debian:stretch
+# https://hub.docker.com/r/bitnami/minideb
+FROM bitnami/minideb:stretch
+
+# https://sphinxsearch.com/blog/
 ENV SPHINX_VERSION 3.0.3-facc3fb
 
 # install dependencies
 RUN apt-get update && apt-get install -y \
-        default-libmysqlclient-dev \
-        libpq-dev \
-        wget
-
-# set timezone
-# @see http://unix.stackexchange.com/a/76711
-RUN cp /usr/share/zoneinfo/CET /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
+	default-libmysqlclient-dev \
+	libpq-dev \
+	wget
 
 # set up and expose directories
 RUN mkdir -pv /opt/sphinx/log /opt/sphinx/index

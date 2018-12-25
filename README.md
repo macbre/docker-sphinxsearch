@@ -7,6 +7,22 @@ Docker image for Sphinx search engine
 docker pull macbre/sphinxsearch
 ```
 
+## Usage example
+
+You can use this image in `docker-compose`-powered app:
+
+```yaml
+services:
+  sphinx:
+    image: macbre/sphinxsearch:3.0.1
+    ports:
+    - "127.0.0.1:36307:36307" # bind to local interface only!
+    volumes:
+    - ./data:/opt/sphinx/index  # directory where sphinx will store index data
+    - ./sphinx.conf:/opt/sphinx/conf/sphinx.conf  # SphinxSE configuration file
+    mem_limit: 512m # match indexer.value from sphinx.conf
+```
+
 ## [Tags available](https://hub.docker.com/r/macbre/sphinxsearch/tags/)
 
 ### `3.0.3`, `latest`
