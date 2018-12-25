@@ -1,7 +1,5 @@
 # docker-sphinxsearch
-Docker image for Sphinx search engine
-
-[Read more](https://hub.docker.com/r/macbre/sphinxsearch/)
+Docker image for [Sphinx search engine](http://sphinxsearch.com/docs/sphinx3.html)
 
 ```
 docker pull macbre/sphinxsearch
@@ -25,7 +23,23 @@ services:
 
 ## [Tags available](https://hub.docker.com/r/macbre/sphinxsearch/tags/)
 
-### `3.0.3`, `latest`
+### `3.1.1`, `latest`
+
+```
+Sphinx 3.1.1 (commit 612d99f4)
+Copyright (c) 2001-2018, Andrew Aksyonoff
+Copyright (c) 2008-2016, Sphinx Technologies Inc (http://sphinxsearch.com)
+
+Built on: Linux alpine38 4.14.69-0-vanilla #1-Alpine SMP Mon Sep 10 19:33:23 UTC 2018 x86_64 Linux
+Built with: gcc 6.4.0
+Build date: Oct 17 2018
+Build type: release
+Configure flags:  '--enable-dl' '--with-mysql' '--with-pgsql' '--with-unixodbc' 'CXXFLAGS=-DSPHINX_TAG= -DNDEBUG -O3 -g1 -D__MUSL__' 'LDFLAGS=-static-libstdc++ -static-libgcc'
+Compiled DB drivers: mysql-dynamic pgsql-dynamic odbc-dynamic
+Enabled dynamic drivers: mysql pgsql
+```
+
+### `3.0.3`
 
 ```
 Sphinx 3.0.3 (commit facc3fb)
