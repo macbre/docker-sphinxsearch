@@ -3,7 +3,7 @@
 FROM bitnami/minideb:stretch
 
 # https://sphinxsearch.com/blog/
-ENV SPHINX_VERSION 3.0.3-facc3fb
+ENV SPHINX_VERSION 3.1.1-612d99f
 
 # install dependencies
 RUN apt-get update && apt-get install -y \
@@ -21,7 +21,7 @@ RUN cd /opt/sphinx && tar -xf /tmp/sphinxsearch.tar.gz
 RUN rm /tmp/sphinxsearch.tar.gz
 
 # point to sphinx binaries
-ENV PATH "${PATH}:/opt/sphinx/sphinx-3.0.3/bin"
+ENV PATH "${PATH}:/opt/sphinx/sphinx-3.1.1/bin"
 RUN indexer -v
 
 # redirect logs to stdout
