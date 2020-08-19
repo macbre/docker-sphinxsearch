@@ -1,9 +1,9 @@
 # Dockerfile for Sphinx SE
 # https://hub.docker.com/_/alpine/
-FROM alpine:3.8
+FROM alpine:3.12
 
 # https://sphinxsearch.com/blog/
-ENV SPHINX_VERSION 3.2.1-f152e0b
+ENV SPHINX_VERSION 3.3.1-b72d67b
 
 # install dependencies
 RUN apk add --no-cache mariadb-connector-c-dev \
@@ -14,13 +14,13 @@ RUN apk add --no-cache mariadb-connector-c-dev \
 RUN mkdir -pv /opt/sphinx/log /opt/sphinx/index
 VOLUME /opt/sphinx/index
 
-# http://sphinxsearch.com/files/sphinx-3.2.1-f152e0b-linux-amd64-musl.tar.gz
+# http://sphinxsearch.com/downloads/sphinx-3.3.1-b72d67b-linux-amd64-musl.tar.gz
 RUN wget http://sphinxsearch.com/files/sphinx-${SPHINX_VERSION}-linux-amd64-musl.tar.gz -O /tmp/sphinxsearch.tar.gz
 RUN cd /opt/sphinx && tar -xf /tmp/sphinxsearch.tar.gz
 RUN rm /tmp/sphinxsearch.tar.gz
 
 # point to sphinx binaries
-ENV PATH "${PATH}:/opt/sphinx/sphinx-3.2.1/bin"
+ENV PATH "${PATH}:/opt/sphinx/sphinx-3.3.1/bin"
 RUN indexer -v
 
 # redirect logs to stdout
