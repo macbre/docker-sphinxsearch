@@ -21,6 +21,10 @@ services:
     mem_limit: 512m # match indexer.value from sphinx.conf
 ```
 
+1. First, execute `docker-compose run sphinx indexer --all` to prepare indices. Otherwise, you'd end up with `WARNING: index 'test1': prealloc: failed to open /opt/sphinx/index/test1.sph: No such file or directory; NOT SERVING` error.
+2. Than, execute `docker-compose up -d` to run sphinsearch deamon in the background.
+
+
 ## [Tags available](https://hub.docker.com/r/macbre/sphinxsearch/tags/)
 
 ### `3.3.1`, `latest`
