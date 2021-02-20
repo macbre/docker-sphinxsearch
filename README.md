@@ -24,6 +24,7 @@ services:
 1. First, execute `docker-compose run sphinx indexer --all` to prepare indices. Otherwise, you'd end up with `WARNING: index 'test1': prealloc: failed to open /opt/sphinx/index/test1.sph: No such file or directory; NOT SERVING` error.
 2. Then, execute `docker-compose up -d` to run sphinsearch daemon in the background.
 
+Read more at https://lukaszherok.com/post/view/9/Running%20SphinxSearch%20in%20Podman%20container
 
 ## [Tags available](https://hub.docker.com/r/macbre/sphinxsearch/tags/)
 
