@@ -2,7 +2,13 @@
 Docker image for [Sphinx search engine](http://sphinxsearch.com/docs/sphinx3.html)
 
 ```
-docker pull macbre/sphinxsearch
+docker pull macbre/sphinxsearch:latest
+```
+
+or from GitHub Containers Registry:
+
+```
+docker pull ghcr.io/macbre/sphinxsearch:latest
 ```
 
 ## Usage example
