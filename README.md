@@ -18,7 +18,7 @@ You can use this image in `docker-compose`-powered app:
 ```yaml
 services:
   sphinx:
-    image: macbre/sphinxsearch:3.3.1
+    image: macbre/sphinxsearch:3.4.1
     ports:
     - "127.0.0.1:36307:36307" # bind to local interface only!
     volumes:
