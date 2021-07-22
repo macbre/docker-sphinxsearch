@@ -34,7 +34,24 @@ Read more at https://lukaszherok.com/post/view/9/Running%20SphinxSearch%20in%20P
 
 ## [Tags available](https://hub.docker.com/r/macbre/sphinxsearch/tags/)
 
-### `3.3.1`, `latest`
+### `3.4.1`, `latest`
+
+```
+Sphinx 3.4.1 (commit efbcc658)
+Copyright (c) 2001-2021, Andrew Aksyonoff
+Copyright (c) 2008-2016, Sphinx Technologies Inc (http://sphinxsearch.com)
+
+Built on: Linux alpine312 5.4.43-1-lts #2-Alpine SMP Thu, 28 May 2020 20:13:48 UTC x86_64 Linux
+Built with: gcc 9.3.0
+Build date: Jul  9 2021
+Build type: release
+Configure flags:  '--enable-dl' '--with-mysql' '--with-pgsql' '--with-unixodbc' 'CXXFLAGS=-DSPHINX_TAG= -DNDEBUG -O3 -g1 -D__MUSL__' 'LDFLAGS=-static-libstdc++ -static-libgcc'
+Compiled DB drivers: mysql-dynamic pgsql-dynamic odbc-dynamic
+Versions: binlog_format v.8, index_format v.55, udf_api v.17
+Enabled dynamic drivers: mysql pgsql
+```
+
+### `3.3.1`
 
 ```
 Sphinx 3.3.1 (commit b72d67bc)
