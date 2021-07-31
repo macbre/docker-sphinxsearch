@@ -27,29 +27,6 @@ services:
     mem_limit: 512m # match indexer.value from sphinx.conf
 ```
 
-or create custom `Dockerfile` with following instructions:
-
-```
-FROM macbre/sphinxsearch:3.4.1
-```
-
-and then use it within `docker-compose`-powered app:
-
-```yaml
-services:
-  sphinx:
-    build:
-      context: . # path to Dockerfile
-      args:
-        CONF_FILE: /opt/sphinx/conf/my_custom_file.conf
-    ports:
-    - "127.0.0.1:36307:36307" # bind to local interface only!
-    volumes:
-    - ./data:/opt/sphinx/index  # directory where sphinx will store index data
-    - ./my_custom_file.conf:/opt/sphinx/conf/my_custom_file.conf  # SphinxSE configuration file
-    mem_limit: 512m # match indexer.value from sphinx.conf
-```
-
 1. First, execute `docker-compose run sphinx indexer --all` to prepare indices. Otherwise, you'd end up with `WARNING: index 'test1': prealloc: failed to open /opt/sphinx/index/test1.sph: No such file or directory; NOT SERVING` error.
 2. Then, execute `docker-compose up -d` to run sphinsearch daemon in the background.
 
