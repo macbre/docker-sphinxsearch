@@ -20,3 +20,8 @@ jobs:
     - name: Index the test data
       run: |
         make index
+    - name: Check the index
+      run: |
+        make start && sleep 2 && docker ps
+        make query
+        docker logs sphinx_test

@@ -137,4 +137,6 @@ Enabled dynamic drivers: mysql pgsql
 docker pull ghcr.io/macbre/sphinxsearch:latest
 docker tag ghcr.io/macbre/sphinxsearch:latest macbre/docker-sphinxsearch
 make index
+make start && sleep 2
+make query
 ```
