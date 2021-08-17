@@ -1,4 +1,4 @@
-# docker-sphinxsearch
+# Docker-sphinxsearch
 Docker image for [Sphinx search engine](http://sphinxsearch.com/docs/sphinx3.html)
 
 ```
@@ -129,4 +129,14 @@ Build type: release
 Configure flags:  '--enable-dl' '--with-mysql' '--with-pgsql' 'CXXFLAGS=-DSPHINX_TAG= -g1' 'LDFLAGS=-static-libstdc++'
 Compiled DB drivers: mysql-dynamic pgsql-dynamic
 Enabled dynamic drivers: mysql pgsql
+```
+
+## Local tests
+
+```
+docker pull ghcr.io/macbre/sphinxsearch:latest
+docker tag ghcr.io/macbre/sphinxsearch:latest macbre/docker-sphinxsearch
+make index
+make start && sleep 2
+make query
 ```

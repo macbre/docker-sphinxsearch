@@ -9,11 +9,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+
     - name: Build the Docker image
       run: |
         docker build . --tag ${{ github.repository }}
         docker images
+
     - name: Execute "indexer -v"
       run: |
         docker run ${{ github.repository }} indexer -v
+
+    - name: Index the test data
+      run: |
+        make index
+
+    - name: Check the index
+      run: |
+        set -x
+        make start && sleep 2 && docker ps
+
+        echo "Make the test queries"
+        make query
+
+        echo "Logs"
+        docker logs sphinx_test
