@@ -17,3 +17,6 @@ jobs:
     - name: Execute "indexer -v"
       run: |
         docker run ${{ github.repository }} indexer -v
+    - name: Index the test data
+      run: |
+        make index
