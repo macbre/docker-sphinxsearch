@@ -1,6 +1,6 @@
 # Dockerfile for Sphinx SE
 # https://hub.docker.com/_/alpine/
-FROM alpine:3.12
+FROM alpine:3.14
 
 # https://sphinxsearch.com/blog/
 ENV SPHINX_VERSION 3.4.1-efbcc65
