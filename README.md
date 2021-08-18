@@ -27,21 +27,14 @@ services:
     mem_limit: 512m # match indexer.value from sphinx.conf
 ```
 
-or create custom `Dockerfile` with following instructions:
-
-```
-FROM macbre/sphinxsearch:3.4.1
-```
-
-and then use it within `docker-compose`-powered app:
+or you can provide your custom config file:
 
 ```yaml
 services:
   sphinx:
-    build:
-      context: . # path to Dockerfile
-      args:
-        CONF_FILE: /opt/sphinx/conf/my_custom_file.conf
+    image: macbre/sphinxsearch:3.4.1
+    environment:
+    - SPHINX_CONFIG_FILE=/opt/sphinx/conf/my_custom_file.conf
     ports:
     - "127.0.0.1:36307:36307" # bind to local interface only!
     volumes:

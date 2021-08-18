@@ -2,8 +2,6 @@
 # https://hub.docker.com/_/alpine/
 FROM alpine:3.14
 
-ARG CONF_FILE=/opt/sphinx/conf/sphinx.conf
-
 # https://sphinxsearch.com/blog/
 ENV SPHINX_VERSION 3.4.1-efbcc65
 
@@ -34,4 +32,11 @@ EXPOSE 36307
 
 VOLUME /opt/sphinx/conf
 
-CMD searchd --nodetach --config ${CONF_FILE}
+# allow custom config file to be passed
+ARG SPHINX_CONFIG_FILE=/opt/sphinx/conf/sphinx.conf
+ENV SPHINX_CONFIG_FILE ${SPHINX_CONFIG_FILE}
+
+# prepare a start script
+RUN echo "exec searchd --nodetach --config \${SPHINX_CONFIG_FILE}" > /opt/sphinx/start.sh
+
+CMD sh /opt/sphinx/start.sh
