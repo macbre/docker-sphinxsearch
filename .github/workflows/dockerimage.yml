@@ -16,9 +16,10 @@ jobs:
         docker build . --tag ${{ github.repository }}
         docker images
 
-    - name: Execute "indexer -v"
+    - name: Execute "indexer -v" and "env"
       run: |
         docker run ${{ github.repository }} indexer -v
+        docker run ${{ github.repository }} env | sort
 
     - name: Index the test data
       run: |
