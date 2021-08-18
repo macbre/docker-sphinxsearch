@@ -20,6 +20,13 @@ jobs:
       run: |
         docker run ${{ github.repository }} indexer -v
 
+    - name: Test handling of custom config files (via SPHINX_CONFIG_FILE env variable)
+      run: |
+        set -x
+
+        docker run ${{ github.repository }} | grep "using config file '/opt/sphinx/conf/sphinx.conf'"
+        docker run --env SPHINX_CONFIG_FILE=/etc/sphinx/custom.conf ${{ github.repository }} | grep "using config file '/etc/sphinx/custom.conf'"
+
     - name: Index the test data
       run: |
         make index

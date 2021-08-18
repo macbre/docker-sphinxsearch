@@ -32,4 +32,11 @@ EXPOSE 36307
 
 VOLUME /opt/sphinx/conf
 
-CMD searchd --nodetach --config /opt/sphinx/conf/sphinx.conf
+# allow custom config file to be passed
+ARG SPHINX_CONFIG_FILE=/opt/sphinx/conf/sphinx.conf
+ENV SPHINX_CONFIG_FILE ${SPHINX_CONFIG_FILE}
+
+# prepare a start script
+RUN echo "exec searchd --nodetach --config \${SPHINX_CONFIG_FILE}" > /opt/sphinx/start.sh
+
+CMD sh /opt/sphinx/start.sh
