@@ -147,11 +147,15 @@ Compiled DB drivers: mysql-dynamic pgsql-dynamic
 Enabled dynamic drivers: mysql pgsql
 ```
 
-## Local tests
+## Testing your changes locally
 
 ```
+docker build . -t macbre/docker-sphinxsearch
+
+# or fetch from the repository and tag it accordingly
 docker pull ghcr.io/macbre/sphinxsearch:latest
 docker tag ghcr.io/macbre/sphinxsearch:latest macbre/docker-sphinxsearch
+
 make index
 make start && sleep 2
 make query
