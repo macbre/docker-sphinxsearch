@@ -13,8 +13,7 @@ start:
                 -v $(PWD)/tests/data:/opt/sphinx/index \
                 -p 36307:36307 \
 		--name sphinx_test \
-                macbre/docker-sphinxsearch \
-		searchd --nodetach --config /opt/sphinx/conf/sphinx.conf
+                macbre/docker-sphinxsearch
 
 query:
 	mysql -h0 -P36307 -e 'show tables'
