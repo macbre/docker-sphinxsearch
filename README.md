@@ -18,11 +18,11 @@ You can use this image in `docker-compose`-powered app:
 ```yaml
 services:
   sphinx:
-    image: macbre/sphinxsearch:3.4.1
+    image: macbre/sphinxsearch:3.5.1
     ports:
     - "127.0.0.1:36307:36307" # bind to local interface only!
     volumes:
-    - ./data:/opt/sphinx/index  # directory where sphinx will store index data
+    - ./data:/opt/sphinx/indexes  # directory where sphinx will store index data
     - ./sphinx.conf:/opt/sphinx/conf/sphinx.conf  # SphinxSE configuration file
     mem_limit: 512m # match indexer.value from sphinx.conf
 ```
@@ -32,25 +32,42 @@ or you can provide your custom config file:
 ```yaml
 services:
   sphinx:
-    image: macbre/sphinxsearch:3.4.1
+    image: macbre/sphinxsearch:3.5.1
     environment:
     - SPHINX_CONFIG_FILE=/opt/sphinx/conf/my_custom_file.conf
     ports:
     - "127.0.0.1:36307:36307" # bind to local interface only!
     volumes:
-    - ./data:/opt/sphinx/index  # directory where sphinx will store index data
+    - ./data:/opt/sphinx/indexes  # directory where sphinx will store index data
     - ./my_custom_file.conf:/opt/sphinx/conf/my_custom_file.conf  # SphinxSE configuration file
     mem_limit: 512m # match indexer.value from sphinx.conf
 ```
 
-1. First, execute `docker-compose run sphinx indexer --all` to prepare indices. Otherwise, you'd end up with `WARNING: index 'test1': prealloc: failed to open /opt/sphinx/index/test1.sph: No such file or directory; NOT SERVING` error.
+1. First, execute `docker-compose run sphinx indexer --all` to prepare indices. Otherwise, you'd end up with `WARNING: index 'test_index': prealloc: failed to open /opt/sphinx/indexes/test_index/test_index.sph: No such file or directory; NOT SERVING` error.
 2. Then, execute `docker-compose up -d` to run sphinsearch daemon in the background.
 
 Read more at https://lukaszherok.com/post/view/9/Running%20SphinxSearch%20in%20Podman%20container
 
 ## [Tags available](https://hub.docker.com/r/macbre/sphinxsearch/tags/)
 
-### `3.4.1`, `latest`
+### `3.5.1`, `latest`
+
+```
+Sphinx 3.5.1 (commit 82c60cbfe)
+Copyright (c) 2001-2023, Andrew Aksyonoff
+Copyright (c) 2008-2016, Sphinx Technologies Inc (http://sphinxsearch.com)
+
+Built on: Linux alpine314 5.10.131-0-lts #1-Alpine SMP Tue, 19 Jul 2022 15:30:18 +0000 x86_64 Linux
+Built with: gcc 10.3.1
+Build date: Feb  2 2023
+Build type: release
+Configure flags:  '--enable-dl' '--with-mysql' '--with-pgsql' '--with-unixodbc' 'CXXFLAGS=-DSPHINX_TAG= -DNDEBUG -O3 -g1 -D__MUSL__' 'LDFLAGS=-static-libstdc++ -static-libgcc'
+Compiled DB drivers: mysql-dynamic pgsql-dynamic odbc-dynamic
+Compiled features: libexpat libstemmer re2 jemalloc
+Versions: binlog_format v.10, index_format v.62, udf_api v.23
+```
+
+### `3.4.1`
 
 ```
 Sphinx 3.4.1 (commit efbcc658)
