@@ -13,7 +13,7 @@ start:
                 -v $(PWD)/tests/data:/opt/sphinx/indexes \
                 -p 36307:36307 \
 		--name sphinx_test \
-        --platform linux/amd64 macbre/docker-sphinxsearch
+                --platform linux/amd64 macbre/docker-sphinxsearch
 
 query:
 	mysql -h0 -P36307 -e 'show tables'
