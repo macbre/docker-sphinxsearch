@@ -3,7 +3,7 @@
 FROM --platform=linux/amd64 alpine:3.18
 
 # https://sphinxsearch.com/blog/
-ENV SPHINX_VERSION 3.5.1-82c60cb
+ENV SPHINX_VERSION 3.6.1-c9dbeda
 
 # install dependencies
 RUN apk add --no-cache mariadb-connector-c-dev \
@@ -14,13 +14,13 @@ RUN apk add --no-cache mariadb-connector-c-dev \
 RUN mkdir -pv /opt/sphinx/logs /opt/sphinx/indexes
 VOLUME /opt/sphinx/indexes
 
-# http://sphinxsearch.com/downloads/sphinx-3.5.1-82c60cb-linux-amd64-musl.tar.gz
+# http://sphinxsearch.com/downloads/sphinx-3.6.1-c9dbeda-linux-amd64-musl.tar.gz
 RUN wget http://sphinxsearch.com/files/sphinx-${SPHINX_VERSION}-linux-amd64-musl.tar.gz -O /tmp/sphinxsearch.tar.gz \
 	&& cd /opt/sphinx && tar -xf /tmp/sphinxsearch.tar.gz \
 	&& rm /tmp/sphinxsearch.tar.gz
 
 # point to sphinx binaries
-ENV PATH "${PATH}:/opt/sphinx/sphinx-3.5.1/bin"
+ENV PATH "${PATH}:/opt/sphinx/sphinx-3.6.1/bin"
 RUN indexer -v
 
 # redirect logs to stdout
