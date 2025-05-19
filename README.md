@@ -18,7 +18,7 @@ You can use this image in `docker-compose`-powered app:
 ```yaml
 services:
   sphinx:
-    image: macbre/sphinxsearch:3.7.1
+    image: macbre/sphinxsearch:3.8.1
     ports:
     - "127.0.0.1:36307:36307" # bind to local interface only!
     volumes:
@@ -32,7 +32,7 @@ or you can provide your custom config file:
 ```yaml
 services:
   sphinx:
-    image: macbre/sphinxsearch:3.7.1
+    image: macbre/sphinxsearch:3.8.1
     environment:
     - SPHINX_CONFIG_FILE=/opt/sphinx/conf/my_custom_file.conf
     ports:
@@ -50,7 +50,24 @@ Read more at https://lukaszherok.com/post/view/9/Running%20SphinxSearch%20in%20P
 
 ## [Tags available](https://hub.docker.com/r/macbre/sphinxsearch/tags/)
 
-### `3.7.1`, `latest`
+### `3.8.1`, `latest`
+
+```
+Sphinx 3.8.1 (commit d25e0bb3)
+Copyright (c) 2001-2025, Andrew Aksyonoff
+Copyright (c) 2008-2016, Sphinx Technologies Inc (http://sphinxsearch.com)
+Built on: #1-Alpine SMP Thu, 18 May 2023 08:53:16 +0000
+Built with: GNU 10.3.1
+Build date: May 12 2025
+Build type: release
+Configure flags: cmake
+Compiled DB drivers: mysql-dynamic pgsql-dynamic odbc-dynamic
+Compiled features: libexpat libstemmer re2 faiss blis
+Versions: binlog_format v.22, index_format v.70, udf_api v.23
+Enabled dynamic drivers: mysql pgsql
+```
+
+### `3.7.1`
 
 ```
 Sphinx 3.7.1 (commit da9f8a4e7)
