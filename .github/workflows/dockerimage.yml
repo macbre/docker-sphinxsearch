@@ -24,7 +24,7 @@ jobs:
 
     - name: Build the Docker image for both amd64 and aarch64 (arm64/v8)
       run: |
-        docker build . --tag ${{ github.repository }} --platform=linux/amd64,linux/aarch64 --load
+        docker build . --tag ${{ github.repository }} --platform=linux/amd64,linux/aarch64 --output="type=image"
         docker images
 
     - name: Execute "indexer -v"
