@@ -2,8 +2,15 @@
 # https://hub.docker.com/r/bitnami/minideb
 FROM bitnami/minideb:bookworm
 
+# docker build --platform=linux/amd64,linux/aarch64 -t macbre/sphinx .
+# amd64 / arm64
+#
+# See https://www.docker.com/blog/faster-multi-platform-builds-dockerfile-cross-compilation-guide/
+ARG TARGETARCH
+
 # https://sphinxsearch.com/blog/
 ENV SPHINX_VERSION=3.8.1-d25e0bb
+RUN bash -c 'echo "Preparing Sphinx v${SPHINX_VERSION} for ${TARGETARCH/arm64/aarch64} architecture ..."'
 
 # install dependencies
 RUN apt-get update \
@@ -19,7 +26,8 @@ VOLUME /opt/sphinx/indexes
 
 # https://sphinxsearch.com/files/sphinx-3.8.1-d25e0bb-linux-amd64-musl.tar.gz - Alpine
 # https://sphinxsearch.com/files/sphinx-3.8.1-d25e0bb-linux-amd64.tar.gz - Debian
-RUN wget http://sphinxsearch.com/files/sphinx-${SPHINX_VERSION}-linux-amd64.tar.gz -O /tmp/sphinxsearch.tar.gz \
+# https://sphinxsearch.com/files/sphinx-3.8.1-d25e0bb-linux-aarch64.tar.gz - aarch64
+RUN bash -c 'wget http://sphinxsearch.com/files/sphinx-${SPHINX_VERSION}-linux-${TARGETARCH/arm64/aarch64}.tar.gz -O /tmp/sphinxsearch.tar.gz' \
 	&& cd /opt/sphinx && tar -xf /tmp/sphinxsearch.tar.gz \
 	&& rm /tmp/sphinxsearch.tar.gz
 
