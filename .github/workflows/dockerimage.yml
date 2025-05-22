@@ -14,9 +14,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Build the Docker image
+    # https://docs.docker.com/build/building/multi-platform/#prerequisites
+    - name: Set up the Docker multi-platform builder
       run: |
-        docker build . --tag ${{ github.repository }}
+        docker buildx create \
+          --name container-builder \
+          --driver docker-container \
+          --bootstrap --use
+
+    - name: Build the Docker image for both amd64 and aarch64 (arm64/v8)
+      run: |
+        docker build . --tag ${{ github.repository }} --platform=linux/amd64,linux/aarch64 --output="type=image"
         docker images
 
     - name: Execute "indexer -v"
