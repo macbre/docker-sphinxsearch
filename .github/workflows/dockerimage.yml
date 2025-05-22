@@ -14,9 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Build the Docker image
+    - name: Build the Docker image for both amd64 and aarch64 (arm64/v8)
       run: |
-        docker build . --tag ${{ github.repository }}
+        docker build . --tag ${{ github.repository }} --platform=linux/amd64,linux/aarch64
         docker images
 
     - name: Execute "indexer -v"
