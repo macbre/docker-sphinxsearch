@@ -1,6 +1,6 @@
 # Dockerfile for Sphinx SE
-# https://hub.docker.com/r/bitnami/minideb
-FROM bitnami/minideb:bookworm
+# https://hub.docker.com/r/linuxcontainers/debian-slim
+FROM ghcr.io/linuxcontainers/debian-slim:12.5
 
 # https://sphinxsearch.com/blog/
 ENV SPHINX_VERSION=3.9.1-141d2ea
